@@ -30,10 +30,6 @@ var VehicleView = Backbone.View.extend({
 
     className: 'vehicle',
 
-    attributes: {
-        "data-color": 'red'
-    },
-
     events: {
         "click .delete": "onDelete",
     },
@@ -44,6 +40,7 @@ var VehicleView = Backbone.View.extend({
 
         this.$el.html(template(this.model.toJSON()));
         this.$el.attr('id', 'vehicle_' + this.model.id);
+        this.$el.attr('data-color', this.model.get('colour'));
 
         return this;
     },
@@ -55,31 +52,6 @@ var VehicleView = Backbone.View.extend({
 
 var VehiclesView = Backbone.View.extend({
     tagName: 'ul',
-
-    // events: {
-    //     "click .vehicle": "onDelete"
-    // },
-
-    subviews: [],
-
-    initialize: function() {
-        var self = this;
-
-        this.model.each(function(vehicle) {
-            self.subviews.push(new VehicleView({model: vehicle, id: vehicle.id}));
-        });
-    },
-    //
-    // onDelete: function(e) {
-    //     e.stopPropagation();
-    //     var id = e.target.id;
-    //     console.log(this.subviews);
-    //     this.model.remove(this.model.findWhere({id: id}));
-    //     var subview = _.findWhere(this.subviews, {id: id});
-    //
-    //     subview.$el.remove();
-    //     this.subviews = _.without(this.subviews, subview);
-    // },
 
     render: function() {
         var self = this;
