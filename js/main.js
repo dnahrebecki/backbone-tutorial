@@ -34,6 +34,10 @@ var VehicleView = Backbone.View.extend({
         "data-color": 'red'
     },
 
+    events: {
+        "click .delete": "onDelete",
+    },
+
     render: function() {
         var source = $('#vehicleTemplate').html();
         var template = _.template(source);
@@ -42,26 +46,40 @@ var VehicleView = Backbone.View.extend({
         this.$el.attr('id', 'vehicle_' + this.model.id);
 
         return this;
+    },
+
+    onDelete: function(){
+        this.remove();
     }
 });
 
 var VehiclesView = Backbone.View.extend({
     tagName: 'ul',
 
-    events: {
-        "click .vehicle": "onDelete"
-    },
-
-    // initialize: function() {
-    //     this.model.on('remove', this.onVehicleRemoved, this);
+    // events: {
+    //     "click .vehicle": "onDelete"
     // },
 
-    onDelete: function(e) {
-        e.stopPropagation();
-        var id = e.target.id;
-        this.model.remove(this.model.findWhere({id: id}));
-        this.$el.find('#vehicle_' + id).remove();
+    subviews: [],
+
+    initialize: function() {
+        var self = this;
+
+        this.model.each(function(vehicle) {
+            self.subviews.push(new VehicleView({model: vehicle, id: vehicle.id}));
+        });
     },
+    //
+    // onDelete: function(e) {
+    //     e.stopPropagation();
+    //     var id = e.target.id;
+    //     console.log(this.subviews);
+    //     this.model.remove(this.model.findWhere({id: id}));
+    //     var subview = _.findWhere(this.subviews, {id: id});
+    //
+    //     subview.$el.remove();
+    //     this.subviews = _.without(this.subviews, subview);
+    // },
 
     render: function() {
         var self = this;
