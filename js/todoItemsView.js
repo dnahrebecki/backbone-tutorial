@@ -32,13 +32,13 @@ var TodoItemsView = Backbone.View.extend({
 
     onAddClicked: function() {
         var $todoItemInput = this.$('#newTodoItem');
-        var description = $todoItemInput.val();
+        var title = $todoItemInput.val();
 
-        if (_.isEmpty(description)) {
+        if (_.isEmpty(title)) {
             return;
         }
 
-        this.collection.add(new TodoItem({description: description}));
+        this.collection.create(new TodoItem({title: title}));
         $todoItemInput.val('');
     },
 

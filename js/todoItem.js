@@ -1,18 +1,18 @@
 var TodoItem = Backbone.Model.extend({
 
-    url: "fakeUrl",
+    urlRoot: "https://jsonplaceholder.typicode.com/todos",
 
     defaults: {
-        isCompleted: false
+        completed: false
     },
 
     validate: function(attrs) {
-        if (_.isEmpty(attrs.description)) {
-            return "Description is required";
+        if (_.isEmpty(attrs.title)) {
+            return "title is required";
         }
     },
 
     toggle: function() {
-        this.set('isCompleted', !this.get('isCompleted'));
+        this.set('completed', !this.get('completed'));
     }
 });

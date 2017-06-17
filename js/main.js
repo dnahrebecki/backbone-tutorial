@@ -3,10 +3,9 @@
 // files and modules.
 
 $(document).ready(function() {
-    var todoItems = new TodoItems([
-        new TodoItem({id: 1, description: "Todo item #1"}),
-        new TodoItem({id: 2, description: "Todo item #2"})
-    ]);
+    var todoItems = new TodoItems();
+    todoItems.fetch();
+
     var todoItemsView = new TodoItemsView({collection: todoItems});
 
     $('#container').html(todoItemsView.render().$el);
