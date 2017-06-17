@@ -3,6 +3,8 @@ var TodoItemsView = Backbone.View.extend({
 
     tagName: 'ul',
 
+    id: 'todoItems',
+
     collection: TodoItems,
 
     events: {
