@@ -18,11 +18,16 @@ var TodoItemsView = Backbone.View.extend({
         }
 
         this.collection.on('add', this.onAddTodoItem, this);
+        this.collection.on('remove', this.onRemoveTodoItem, this);
     },
 
     onAddTodoItem: function(todoItem) {
         var todoItemView = new TodoItemView({model: todoItem});
         this.$el.append(todoItemView.render().$el);
+    },
+
+    onRemoveTodoItem: function(todoItem) {
+        // do we need this? model is removed from collection, and view itself called .remove()
     },
 
     onAddClicked: function() {

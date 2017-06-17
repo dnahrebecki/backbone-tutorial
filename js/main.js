@@ -4,8 +4,8 @@
 
 $(document).ready(function() {
     var todoItems = new TodoItems([
-        new TodoItem({description: "Todo item #1"}),
-        new TodoItem({description: "Todo item #2"})
+        new TodoItem({id: 1, description: "Todo item #1"}),
+        new TodoItem({id: 2, description: "Todo item #2"})
     ]);
     var todoItemsView = new TodoItemsView({collection: todoItems});
 
