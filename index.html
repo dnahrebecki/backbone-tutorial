@@ -20,6 +20,7 @@
         <script src="js/lib/jquery-min.js"></script>
         <script src="js/lib/underscore-min.js"></script>
         <script src="js/lib/backbone-min.js"></script>
+        <script src="js/lib/mustache.js"></script>
 
         <script src="js/todoItem.js"></script>
         <script src="js/todoItems.js"></script>
@@ -27,5 +28,12 @@
         <script src="js/todoItemsView.js"></script>
 
         <script src="js/main.js"></script>
+
+        <!-- templates -->
+        <script type="text/html" id="todoItemTemplate">
+            <input type="checkbox" id="toggle" {{#completed}} checked {{/completed}}/>
+            {{ title }}
+            <button id="delete">Delete</button>
+        </script>
     </body>
 </html>
