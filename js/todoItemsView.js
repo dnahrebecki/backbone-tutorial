@@ -1,10 +1,6 @@
 
 var TodoItemsView = Backbone.View.extend({
 
-    tagName: 'ul',
-
-    id: 'todoItems',
-
     collection: TodoItems,
 
     events: {
@@ -23,7 +19,7 @@ var TodoItemsView = Backbone.View.extend({
 
     onAddTodoItem: function(todoItem) {
         var todoItemView = new TodoItemView({model: todoItem});
-        this.$el.append(todoItemView.render().$el);
+        this.$('#todoItems').append(todoItemView.render().$el);
     },
 
     onRemoveTodoItem: function(todoItem) {
@@ -49,13 +45,10 @@ var TodoItemsView = Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.append('<input type="text" id="newTodoItem" autofocus />');
-        this.$el.append('<button id="add">Add</button>');
+        var template = $('#todoItemsTemplate').html();
+        var html = Mustache.render(template);
 
-        this.collection.each(function(todoItem) {
-            var todoItemView = new TodoItemView({model: todoItem});
-            this.$el.append(todoItemView.render().$el);
-        }, this);
+        this.$el.html(html);
 
         return this;
     }

@@ -4,6 +4,7 @@ var TodoItemView = Backbone.View.extend({
 
     events: {
         'click #toggle': 'onClickToggle',
+        'click #title': 'onClickTitle',
         'click #delete': 'onClickDelete'
     },
 
@@ -19,6 +20,10 @@ var TodoItemView = Backbone.View.extend({
     onClickToggle: function() {
         this.model.toggle();
         this.model.save();
+    },
+
+    onClickTitle: function() {
+        this.onClickToggle();
     },
     
     onClickDelete: function() {

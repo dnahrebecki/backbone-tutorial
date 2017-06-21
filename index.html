@@ -31,9 +31,17 @@
 
         <!-- templates -->
         <script type="text/html" id="todoItemTemplate">
-            <input type="checkbox" id="toggle" {{#completed}} checked {{/completed}}/>
-            {{ title }}
+            <label>
+                <input type="checkbox" id="toggle" {{#completed}} checked {{/completed}}/>
+                 {{ title }}
+            </label>
             <button id="delete">Delete</button>
+        </script>
+
+        <script type="text/html" id="todoItemsTemplate">
+            <input type="text" id="newTodoItem" autofocus />
+            <button id="add">Add</button>
+            <ul id="todoItems"></ul>
         </script>
     </body>
 </html>
