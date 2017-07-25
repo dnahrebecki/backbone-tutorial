@@ -1,18 +1,24 @@
-var TodoItem = Backbone.Model.extend({
+define(['underscore', 'backbone'], function(_, Backbone) {
 
-    urlRoot: "https://jsonplaceholder.typicode.com/todos",
+    var TodoItem = Backbone.Model.extend({
 
-    defaults: {
-        completed: false
-    },
+        urlRoot: "https://jsonplaceholder.typicode.com/todos",
 
-    validate: function(attrs) {
-        if (_.isEmpty(attrs.title)) {
-            return "title is required";
+        defaults: {
+            completed: false
+        },
+
+        validate: function(attrs) {
+            if (_.isEmpty(attrs.title)) {
+                return "title is required";
+            }
+        },
+
+        toggle: function() {
+            this.set('completed', !this.get('completed'));
         }
-    },
+    });
 
-    toggle: function() {
-        this.set('completed', !this.get('completed'));
-    }
+    return TodoItem;
 });
+

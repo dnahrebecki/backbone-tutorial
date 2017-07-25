@@ -1,12 +1,12 @@
-// In the first few sections, we do all the coding here.
-// Later, you'll see how to organize your code into separate
-// files and modules.
+require.config({
+    paths: {
+        jquery: 'lib/jquery-min',
+        underscore: 'lib/underscore-min',
+        backbone: 'lib/backbone-min',
+        mustache: 'lib/mustache'
+    }
+});
 
-$(document).ready(function() {
-    var todoItems = new TodoItems();
-    todoItems.fetch();
-
-    var todoItemsView = new TodoItemsView({collection: todoItems});
-
-    $('#container').html(todoItemsView.render().$el);
+define(['app'], function(App) {
+    App.initialize();
 });

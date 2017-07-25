@@ -1,6 +1,10 @@
-var TodoItems = Backbone.Collection.extend({
+define(['underscore', 'backbone', 'todoItem'], function(_, Backbone, TodoItem) {
+    var TodoItems = Backbone.Collection.extend({
 
-    url: "https://jsonplaceholder.typicode.com/todos",
+        url: "https://jsonplaceholder.typicode.com/todos",
 
-    model: TodoItem
+        model: TodoItem
+    });
+
+    return TodoItems;
 });
